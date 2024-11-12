@@ -29,7 +29,7 @@ def mover_botao():
         x = random.randint(50, janela.winfo_width() - 150)
         y = random.randint(50, janela.winfo_height() - 150)
         botao.place(x=x, y=y)
-        janela.after(800, mover_botao)
+        janela.after(1600, mover_botao)
 
 def atualizar_tempo():
     global tempo_restante
@@ -42,7 +42,7 @@ def atualizar_tempo():
 
 def fim_do_jogo():
     botao.place_forget()
-    mensagem_final = f"Fim de jogo\n Pontuação final: {score}\nParabéns, {nome_jogador}, você ganhou!" if score > 10 else f"Fim de jogo\n {nome_jogador}, você perdeu! Pontuação final: {score}"
+    mensagem_final = f"Fim de jogo\n Pontuação final: {score}\nParabéns, {nome_jogador}, você ganhou um chiclete!" if score > 10 else f"Fim de jogo\n {nome_jogador}, você perdeu! Pontuação final: {score}"
     fim_label = ctk.CTkLabel(janela, text=mensagem_final, font=("Arial", 30), text_color="white")
     fim_label.pack(pady=20)
     botao_reiniciar = ctk.CTkButton(janela, text="Reiniciar", font=("Arial", 20), text_color="white", fg_color="red", hover_color="#e57373", command=reiniciar_jogo)
@@ -84,9 +84,9 @@ imagem = Image.open("./img/image-removebg-preview (4).png")
 imagem = imagem.resize((100, 100))
 imagem_tk = ImageTk.PhotoImage(imagem)
 
+
 botao = ctk.CTkButton(janela, image=imagem_tk, text="", fg_color="grey", hover_color="#333333", command=clique_botao)
 botao_iniciar = ctk.CTkButton(janela, text="Iniciar", font=("Arial", 20), text_color="white", fg_color="green", hover_color="#3a9f5d", command=iniciar_jogo)
 
 tela_inicial()
-
 janela.mainloop()
